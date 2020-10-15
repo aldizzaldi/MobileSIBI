@@ -1,0 +1,2 @@
+rootProject.name='MobileSIBI'
+include ':app'
