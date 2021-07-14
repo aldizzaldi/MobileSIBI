@@ -6,5 +6,6 @@
     </style>
 
     <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar"></style>
+    <style name="PopUp" parent="Theme.AppCompat.Dialog.Alert"/>
 
 </resources>

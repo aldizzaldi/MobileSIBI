@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tv_recording"
+        android:layout_marginTop="120dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recording ..."
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/tv_hasil"
+        android:gravity="center"
+        android:layout_marginTop="110dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hasil Dari gerakanmu adalah A"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/tv_hasil_benar_salah"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jawabanmu Benar"
+        android:textStyle="bold"
+        android:textSize="22dp"
+        android:textColor="@color/black"/>
+
+</LinearLayout>

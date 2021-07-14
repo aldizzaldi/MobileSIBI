@@ -4,11 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tv_huruf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="HURUF A"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="24dp"
+        android:textStyle="bold"/>
+
     <FrameLayout
         android:layout_marginTop="28dp"
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="240dp">
 
         <VideoView
             android:id="@+id/videoView"
@@ -18,13 +29,32 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/tv_huruf"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:id="@+id/tv_ingin_mencoba1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:text="HURUF A"
+        android:text="Ingin mencoba gerakan"
+        android:textColor="@color/black"
+        android:textSize="20dp"/>
+
+    <TextView
         android:gravity="center"
-        android:textSize="24dp"
-        android:textStyle="bold"/>
+        android:id="@+id/tv_ingin_mencoba2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="seperti pada video ?"
+        android:textColor="@color/black"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/btn_coba_gerakan"
+        android:layout_marginTop="18dp"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:text="Coba Gerakan"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_button"/>
 
 </LinearLayout>

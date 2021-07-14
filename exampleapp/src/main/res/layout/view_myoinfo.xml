@@ -104,11 +104,11 @@
             android:layout_height="wrap_content"
             android:text="NEXT" />
 
-        <Button
-            android:id="@+id/last"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LAST" />
+<!--        <Button-->
+<!--            android:id="@+id/last"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="LAST" />-->
 
     </LinearLayout>
 

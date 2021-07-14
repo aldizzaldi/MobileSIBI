@@ -8,9 +8,8 @@ import retrofit2.http.POST;
 public interface IApiEndPoint {
 
     @FormUrlEncoded
-    @POST("login")
-    Call<DataSensorResponse> login(
-            @Field("etst") String emailUser,
-            @Field("password") String passwordUser
+    @POST("myo")
+    Call<DataSensorResponse> myo(
+            @Field("test") String dataSensor
     );
 }

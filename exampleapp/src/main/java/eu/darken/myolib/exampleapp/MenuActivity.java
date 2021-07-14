@@ -9,6 +9,8 @@ import android.widget.Button;
 public class MenuActivity extends AppCompatActivity {
 
     private Button btnMenuBelajar;
+    private Button btnMyo;
+    static boolean myoConnect = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,11 +18,24 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         btnMenuBelajar = findViewById(R.id.btn_belajar);
+        btnMyo = findViewById(R.id.btn_koneksi);
+
+        if (myoConnect){
+            btnMyo.setVisibility(View.GONE);
+        }
 
         btnMenuBelajar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, BelajarActivity.class);
+                MenuActivity.this.startActivity(intent);
+            }
+        });
+
+        btnMyo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, MainActivity.class);
                 MenuActivity.this.startActivity(intent);
             }
         });

@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -20,17 +21,11 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import eu.darken.myolib.Myo;
 import eu.darken.myolib.MyoCmds;
-import eu.darken.myolib.MyoInfo;
 import eu.darken.myolib.msgs.MyoMsg;
 import eu.darken.myolib.processor.classifier.ClassifierEvent;
 import eu.darken.myolib.processor.classifier.ClassifierProcessor;
@@ -40,6 +35,8 @@ import eu.darken.myolib.processor.imu.ImuData;
 import eu.darken.myolib.processor.imu.ImuProcessor;
 import eu.darken.myolib.processor.imu.MotionEvent;
 import eu.darken.myolib.processor.imu.MotionProcessor;
+
+import static eu.darken.myolib.exampleapp.MenuActivity.myoConnect;
 
 
 /**
@@ -89,7 +86,7 @@ public class MyoInfoView extends RelativeLayout implements
     static ArrayList<Double> emgPod7 = new ArrayList<Double>();
     static ArrayList<Double> emgPod8 = new ArrayList<Double>();
 
-    public static JSONArray dataSensor = new JSONArray();
+    public static String dataSensor;
 
     static boolean record = false;
 
@@ -122,8 +119,9 @@ public class MyoInfoView extends RelativeLayout implements
         mAcclData = findViewById(R.id.tv_accl);
         mEulerData = findViewById(R.id.tv_euler);
         buttonNext = findViewById(R.id.next);
-        buttonlast = findViewById(R.id.last);
+//        buttonlast = findViewById(R.id.last);
         mOrientationData = findViewById(R.id.tv_orientation);
+
         super.onFinishInflate();
     }
 
@@ -193,18 +191,20 @@ public class MyoInfoView extends RelativeLayout implements
         buttonNext.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), NextActivity.class);
+                Intent intent = new Intent(getContext(), MenuActivity.class);
+                myoConnect = true;
                 getContext().startActivity(intent);
+
 //                record();
             }
         });
 
-        buttonlast.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                record();
-            }
-        });
+//        buttonlast.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                record();
+//            }
+//        });
         super.onAttachedToWindow();
     }
 
@@ -462,6 +462,7 @@ public class MyoInfoView extends RelativeLayout implements
         acclXTemp.clear();
 
         new Handler().postDelayed(new Runnable() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void run() {
                 record = false;
@@ -470,6 +471,7 @@ public class MyoInfoView extends RelativeLayout implements
         },3000);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public static void calculateData(){
         double meanAcclX = CalculateMean(acclXTemp);
         double meanAcclY = CalculateMean(acclYTemp);
@@ -726,20 +728,24 @@ public class MyoInfoView extends RelativeLayout implements
         dataFeature[124] = kurtosisEMG7;
         dataFeature[125] = kurtosisEMG8;
 
-        JSONArray sendData = new JSONArray();
-        for (int i = 0; i<dataFeature.length; i++){
-            try {
-                sendData = sendData.put(dataFeature[i]);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-        dataSensor = sendData;
+        String[] str = new String[dataFeature.length];
 
-        Log.d("send_data", sendData + "");
-        Log.d("data_feature", dataFeature[23] + "");
+        for(int i=0; i<dataFeature.length; i++) {
+            str[i] = String.valueOf(dataFeature[i]);
+        }
+
+        dataSensor = String.join(",", str);
+
+//        JSONArray sendData = new JSONArray();
+//        for (int i = 0; i<dataFeature.length; i++){
+//            try {
+//                sendData = sendData.put(dataFeature[i]);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        dataSensor = sendData;
         Log.d("data_sensor1", dataSensor + "");
 
     }
-
 }

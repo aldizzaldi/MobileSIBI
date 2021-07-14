@@ -3,6 +3,7 @@
     package="eu.darken.myolib.exampleapp" >
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +25,8 @@
             android:theme="@style/NoActionBar"/>
         <activity android:name=".BelajarActivity"/>
         <activity android:name=".VideoViewActivity"/>
+        <activity android:name=".PopUpRecordActivity"
+            android:theme="@style/PopUp"/>
 <!--        <activity android:name=".ChoosingActivity"/>-->
     </application>
 
