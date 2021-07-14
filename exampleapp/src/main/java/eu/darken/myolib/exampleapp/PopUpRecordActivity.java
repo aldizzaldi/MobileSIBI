@@ -54,7 +54,7 @@ public class PopUpRecordActivity extends AppCompatActivity {
     }
 
     public void sendAPI(){
-        apiEndPoint.myo(dataSensorString).enqueue(new Callback<DataSensorResponse>() {
+        apiEndPoint.myo(dataSensor).enqueue(new Callback<DataSensorResponse>() {
             @Override
             public void onResponse(Call<DataSensorResponse> call, Response<DataSensorResponse> response) {
                 if(response.isSuccessful()){
