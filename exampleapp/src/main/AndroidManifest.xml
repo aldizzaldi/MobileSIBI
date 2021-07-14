@@ -22,6 +22,8 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".MenuActivity"
             android:theme="@style/NoActionBar"/>
+        <activity android:name=".BelajarActivity"/>
+        <activity android:name=".VideoViewActivity"/>
 <!--        <activity android:name=".ChoosingActivity"/>-->
     </application>
 
