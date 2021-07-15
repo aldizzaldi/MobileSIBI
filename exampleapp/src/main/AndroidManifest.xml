@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="eu.darken.myolib.exampleapp" >
+    package="eu.darken.myolib.exampleapp">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SET_ALARM"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+        <receiver
+            android:name=".alarm.NotificationReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
         <activity
             android:name=".SplashscreenActivity"
-            android:theme="@style/NoActionBar"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NextActivity"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".MenuActivity"
-            android:theme="@style/NoActionBar"/>
-        <activity android:name=".MenuBelajarActivity"/>
-        <activity android:name=".VideoViewActivity"/>
-        <activity android:name=".PopUpRecordActivity"
-            android:theme="@style/PopUp"/>
-<!--        <activity android:name=".ChoosingActivity"/>-->
+        <activity android:name=".NextActivity" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MenuActivity"
+            android:theme="@style/NoActionBar" />
+        <activity android:name=".MenuBelajarActivity" />
+        <activity android:name=".VideoViewActivity" />
+        <activity
+            android:name=".PopUpRecordActivity"
+            android:theme="@style/PopUp" />
     </application>
 
 </manifest>

@@ -28,15 +28,15 @@
         android:textSize="20dp"
         android:textColor="@color/black"/>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/tv_hasil_benar_salah"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Jawabanmu Benar"
-        android:textStyle="bold"
-        android:textSize="22dp"
-        android:textColor="@color/black"/>
+<!--    <TextView-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:id="@+id/tv_hasil_benar_salah"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Jawabanmu Benar"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textSize="22dp"-->
+<!--        android:textColor="@color/black"/>-->
 
 </LinearLayout>

@@ -41,23 +41,23 @@
         android:textColor="@color/white"
         android:background="@drawable/rounded_button"/>
 
-    <ToggleButton
-        android:id="@+id/btn_notif"
-        android:layout_marginTop="20dp"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:textOff="Notif Mati"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_button"/>
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_keluar"-->
+<!--    <ToggleButton-->
+<!--        android:id="@+id/btn_notif"-->
 <!--        android:layout_marginTop="20dp"-->
 <!--        android:layout_width="200dp"-->
 <!--        android:layout_height="40dp"-->
 <!--        android:layout_gravity="center"-->
-<!--        android:text="Keluar"-->
+<!--        android:textOff="Notif Mati"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:background="@drawable/rounded_button"/>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_coba"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:text="test"-->
 <!--        android:textColor="@color/white"-->
 <!--        android:background="@drawable/rounded_button"/>-->
 

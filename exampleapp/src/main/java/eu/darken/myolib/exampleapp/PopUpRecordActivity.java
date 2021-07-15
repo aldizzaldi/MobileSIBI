@@ -34,10 +34,10 @@ public class PopUpRecordActivity extends AppCompatActivity {
 
         tvRecording = findViewById(R.id.tv_recording);
         tvHasil = findViewById(R.id.tv_hasil);
-        tvSalahBenar = findViewById(R.id.tv_hasil_benar_salah);
+//        tvSalahBenar = findViewById(R.id.tv_hasil_benar_salah);
 
         tvHasil.setVisibility(View.GONE);
-        tvSalahBenar.setVisibility(View.GONE);
+//        tvSalahBenar.setVisibility(View.GONE);
 
         huruf = getIntent().getStringExtra("VALUE");
 
@@ -62,15 +62,18 @@ public class PopUpRecordActivity extends AppCompatActivity {
                     Log.d("hasil_api", response.body().getMessage() + "/" + hasilAPI);
                     tvRecording.setVisibility(View.GONE);
                     tvHasil.setVisibility(View.VISIBLE);
-                    tvSalahBenar.setVisibility(View.VISIBLE);
-                    tvHasil.setText("Hasil dari gerakanmu adalah " + hasilAPI.toUpperCase());
+//                    tvSalahBenar.setVisibility(View.VISIBLE);
+
                     if (huruf.equalsIgnoreCase(hasilAPI)){
-                        tvSalahBenar.setText("Jawabanmu BENAR");
-                        tvSalahBenar.setTextColor(0x06CE27);
+//                        tvSalahBenar.setText("Jawabanmu BENAR");
+//                        tvSalahBenar.setTextColor(0x06CE27);
+
+                        tvHasil.setText("Hasil dari gerakanmu adalah " + hasilAPI.toUpperCase() + " gerakanmu sudah tepat");
                     }
                     else {
-                        tvSalahBenar.setText("Jawabanmu SALAH");
-                        tvSalahBenar.setTextColor(0xDB0A2D);
+//                        tvSalahBenar.setText("Jawabanmu SALAH");
+//                        tvSalahBenar.setTextColor(0xDB0A2D);
+                        tvHasil.setText("Hasil dari gerakanmu adalah " + hasilAPI.toUpperCase() + " gerakanmu belum tepat");
                     }
                 }
                 else{

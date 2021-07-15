@@ -9,11 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 public class SplashscreenActivity extends AppCompatActivity {
 
     private final int DELAY = 3000;
+    private static final String TAG = SplashscreenActivity.class.getSimpleName();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
+        SharedPrefUtils.initSharedPreference("SettingPref", this);
 //        getSupportActionBar().hide();
 
         new Handler().postDelayed(new Runnable() {
