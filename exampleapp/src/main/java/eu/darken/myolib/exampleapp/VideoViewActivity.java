@@ -31,11 +31,21 @@ public class VideoViewActivity extends AppCompatActivity {
             btnRecord.setVisibility(View.GONE);
         }
 
-        getSupportActionBar().setTitle("Belajar Huruf");
+        int tanda = getIntent().getIntExtra("TANDA",99);
+        int rawFile = getIntent().getIntExtra("RAW_FILE", 0);
+        final String huruf = getIntent().getStringExtra("ITEM");
+
+        if (tanda == 0){
+            getSupportActionBar().setTitle("Belajar Huruf");
+            tvHuruf.setText("Huruf " + huruf);
+        }
+        else{
+            getSupportActionBar().setTitle("Belajar Kata Dasar");
+            tvHuruf.setText("Kata " + huruf);
+        }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        int rawFile = getIntent().getIntExtra("RAW_FILE", 0);
-        final String huruf = getIntent().getStringExtra("HURUF");
 
         VideoView videoView = findViewById(R.id.videoView);
         String videoPath = "android.resource://" + getPackageName() + "/" + rawFile;
@@ -45,7 +55,7 @@ public class VideoViewActivity extends AppCompatActivity {
         MediaController mediaController = new MediaController(this);
         videoView.setMediaController(mediaController);
 
-        tvHuruf.setText("Huruf " + huruf);
+
 
 //        tvMencoba1 = findViewById(R.id.tv_ingin_mencoba1);
 //        tvMencoba1.setVisibility(View.GONE);

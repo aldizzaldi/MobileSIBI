@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MenuHurufAdapter extends RecyclerView.Adapter<MenuHurufAdapter.BelajarViewHolder> {
-    private ArrayList<HurufItem> hurufItems;
+public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.BelajarViewHolder> {
+    private ArrayList<BelajarItem> belajarItems;
     private final Context context;
 
     public static class BelajarViewHolder extends RecyclerView.ViewHolder{
@@ -24,8 +24,8 @@ public class MenuHurufAdapter extends RecyclerView.Adapter<MenuHurufAdapter.Bela
         }
     }
 
-    public MenuHurufAdapter(ArrayList<HurufItem> hurufItems, Context context) {
-        this.hurufItems = hurufItems;
+    public MenuItemAdapter(ArrayList<BelajarItem> belajarItems, Context context) {
+        this.belajarItems = belajarItems;
         this.context = context;
     }
 
@@ -39,15 +39,19 @@ public class MenuHurufAdapter extends RecyclerView.Adapter<MenuHurufAdapter.Bela
 
     @Override
     public void onBindViewHolder(@NonNull BelajarViewHolder holder, int position) {
-        final HurufItem currentItem =  hurufItems.get(position);
+        final BelajarItem currentItem =  belajarItems.get(position);
+        if (currentItem.getTanda() == 0)
+            holder.textView.setText("Huruf " + currentItem.getItem());
+        else
+            holder.textView.setText("Kata " + currentItem.getItem());
 
-        holder.textView.setText("Huruf " + currentItem.getHuruf());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, VideoViewActivity.class);
                 intent.putExtra("RAW_FILE", currentItem.getRawFile());
-                intent.putExtra("HURUF", currentItem.getHuruf());
+                intent.putExtra("ITEM", currentItem.getItem());
+                intent.putExtra("TANDA", currentItem.getTanda());
                 context.startActivity(intent);
             }
         });
@@ -55,7 +59,7 @@ public class MenuHurufAdapter extends RecyclerView.Adapter<MenuHurufAdapter.Bela
 
     @Override
     public int getItemCount() {
-        return (hurufItems != null) ? hurufItems.size() : 0;
+        return (belajarItems != null) ? belajarItems.size() : 0;
     }
 
 }

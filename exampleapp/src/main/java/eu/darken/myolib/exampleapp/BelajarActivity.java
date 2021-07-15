@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class BelajarActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private MenuHurufAdapter adapter;
+    private MenuItemAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,37 +20,37 @@ public class BelajarActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        ArrayList<HurufItem> hurufItems = new ArrayList<>();
+        ArrayList<BelajarItem> belajarItems = new ArrayList<>();
 
-        hurufItems.add(new HurufItem(1,"A", R.raw.a));
-        hurufItems.add(new HurufItem(2,"B", R.raw.b));
-        hurufItems.add(new HurufItem(3,"C", R.raw.c));
-        hurufItems.add(new HurufItem(4,"D", R.raw.d));
-        hurufItems.add(new HurufItem(5,"E", R.raw.e));
-        hurufItems.add(new HurufItem(6,"F", R.raw.f));
-        hurufItems.add(new HurufItem(7,"G", R.raw.g));
-        hurufItems.add(new HurufItem(8,"H", R.raw.h));
-        hurufItems.add(new HurufItem(9,"I", R.raw.i));
-        hurufItems.add(new HurufItem(10,"J", R.raw.j));
-        hurufItems.add(new HurufItem(11,"K", R.raw.k));
-        hurufItems.add(new HurufItem(12,"L", R.raw.l));
-        hurufItems.add(new HurufItem(13,"M", R.raw.m));
-        hurufItems.add(new HurufItem(14,"N", R.raw.n));
-        hurufItems.add(new HurufItem(15,"O", R.raw.o));
-        hurufItems.add(new HurufItem(16,"P", R.raw.p));
-        hurufItems.add(new HurufItem(17,"Q", R.raw.q));
-        hurufItems.add(new HurufItem(18,"R", R.raw.r));
-        hurufItems.add(new HurufItem(19,"S", R.raw.s));
-        hurufItems.add(new HurufItem(20,"T", R.raw.t));
-        hurufItems.add(new HurufItem(21,"U", R.raw.u));
-        hurufItems.add(new HurufItem(22,"V", R.raw.v));
-        hurufItems.add(new HurufItem(23,"W", R.raw.w));
-        hurufItems.add(new HurufItem(24,"X", R.raw.x));
-        hurufItems.add(new HurufItem(25,"Y", R.raw.y));
-        hurufItems.add(new HurufItem(26,"Z", R.raw.z));
+        belajarItems.add(new BelajarItem(1,"A", R.raw.a,0));
+        belajarItems.add(new BelajarItem(2,"B", R.raw.b,0));
+        belajarItems.add(new BelajarItem(3,"C", R.raw.c,0));
+        belajarItems.add(new BelajarItem(4,"D", R.raw.d,0));
+        belajarItems.add(new BelajarItem(5,"E", R.raw.e,0));
+        belajarItems.add(new BelajarItem(6,"F", R.raw.f,0));
+        belajarItems.add(new BelajarItem(7,"G", R.raw.g,0));
+        belajarItems.add(new BelajarItem(8,"H", R.raw.h,0));
+        belajarItems.add(new BelajarItem(9,"I", R.raw.i,0));
+        belajarItems.add(new BelajarItem(10,"J", R.raw.j,0));
+        belajarItems.add(new BelajarItem(11,"K", R.raw.k,0));
+        belajarItems.add(new BelajarItem(12,"L", R.raw.l,0));
+        belajarItems.add(new BelajarItem(13,"M", R.raw.m,0));
+        belajarItems.add(new BelajarItem(14,"N", R.raw.n,0));
+        belajarItems.add(new BelajarItem(15,"O", R.raw.o,0));
+        belajarItems.add(new BelajarItem(16,"P", R.raw.p,0));
+        belajarItems.add(new BelajarItem(17,"Q", R.raw.q,0));
+        belajarItems.add(new BelajarItem(18,"R", R.raw.r,0));
+        belajarItems.add(new BelajarItem(19,"S", R.raw.s,0));
+        belajarItems.add(new BelajarItem(20,"T", R.raw.t,0));
+        belajarItems.add(new BelajarItem(21,"U", R.raw.u,0));
+        belajarItems.add(new BelajarItem(22,"V", R.raw.v,0));
+        belajarItems.add(new BelajarItem(23,"W", R.raw.w,0));
+        belajarItems.add(new BelajarItem(24,"X", R.raw.x,0));
+        belajarItems.add(new BelajarItem(25,"Y", R.raw.y,0));
+        belajarItems.add(new BelajarItem(26,"Z", R.raw.z,0));
 
         recyclerView = findViewById(R.id.rv_belajar);
-        adapter = new MenuHurufAdapter(hurufItems, this);
+        adapter = new MenuItemAdapter(belajarItems, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
