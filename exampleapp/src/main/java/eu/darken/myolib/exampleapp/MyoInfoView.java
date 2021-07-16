@@ -347,6 +347,7 @@ public class MyoInfoView extends RelativeLayout implements
 
                         if(record){
                             acclXTemp.add(acclX);
+                            Log.d("acclwe", acclX + "/" + imuData.getAccelerometerData());
                             acclYTemp.add(acclY);
                             acclZTemp.add(acclZ);
                             gyroXTemp.add(gyroX);
@@ -772,7 +773,7 @@ public class MyoInfoView extends RelativeLayout implements
 //        }
 
         for(int i=0; i<dataFeature.length; i++) {
-            str[i] = String.valueOf(dataFeature[i]);
+            str[i] = df.format(dataFeature[i]);
         }
 
 //        for(int i=0; i<dataFeature.length; i++) {

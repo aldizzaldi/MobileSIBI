@@ -16,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static eu.darken.myolib.exampleapp.MyoInfoView.dataSensorFloat;
+import static eu.darken.myolib.exampleapp.MyoInfoView.dataSensor;
 import static eu.darken.myolib.exampleapp.MyoInfoView.record;
 
 public class PopUpRecordActivity extends AppCompatActivity {
@@ -67,7 +67,7 @@ public class PopUpRecordActivity extends AppCompatActivity {
     }
 
     public void sendAPI(){
-        apiEndPoint.myo(token, dataSensorFloat).enqueue(new Callback<DataSensorResponse>() {
+        apiEndPoint.myo(token, dataSensor).enqueue(new Callback<DataSensorResponse>() {
             @Override
             public void onResponse(Call<DataSensorResponse> call, Response<DataSensorResponse> response) {
                 if(response.isSuccessful()){
