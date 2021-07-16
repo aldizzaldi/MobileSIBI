@@ -13,7 +13,7 @@ import static eu.darken.myolib.exampleapp.MenuActivity.myoConnect;
 
 
 public class VideoViewActivity extends AppCompatActivity {
-    TextView tvHuruf, tvMencoba1, tvMencoba2;
+    TextView tvHuruf, tvMencoba1, tvMencoba2, tvHint;
     Button btnRecord;
 
     @Override
@@ -24,11 +24,14 @@ public class VideoViewActivity extends AppCompatActivity {
         tvHuruf = findViewById(R.id.tv_huruf);
         tvMencoba1 = findViewById(R.id.tv_ingin_mencoba1);
         tvMencoba2 = findViewById(R.id.tv_ingin_mencoba2);
+        tvHint = findViewById(R.id.tv_hint);
+        tvHint.setVisibility(View.GONE);
 
         if (!myoConnect){
             tvMencoba1.setVisibility(View.GONE);
             tvMencoba2.setVisibility(View.GONE);
             btnRecord.setVisibility(View.GONE);
+            tvHint.setVisibility(View.VISIBLE);
         }
 
         int tanda = getIntent().getIntExtra("TANDA",99);

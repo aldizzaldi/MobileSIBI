@@ -5,16 +5,16 @@ import com.google.gson.annotations.SerializedName;
 public class DataSensorResponse {
 
     @SerializedName("values")
-    String values;
+    String[] values;
 
     @SerializedName("message")
     String message;
 
-    public String getValues() {
+    public String[] getValues() {
         return values;
     }
 
-    public void setValues(String values) {
+    public void setValues(String[] values) {
         this.values = values;
     }
 

@@ -20,7 +20,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private Button btnMenuBelajar;
     private Button btnMyo;
-    private Button btntest;
+    private Button btnAbout;
     static boolean myoConnect = false;
     private ToggleButton btnNotif;
 
@@ -33,6 +33,7 @@ public class MenuActivity extends AppCompatActivity {
 
         btnMenuBelajar = findViewById(R.id.btn_belajar);
         btnMyo = findViewById(R.id.btn_koneksi);
+        btnAbout = findViewById(R.id.btn_about);
 //        btnNotif = findViewById(R.id.btn_notif);
 //        btntest = findViewById(R.id.btn_coba);
 
@@ -54,6 +55,14 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+                MenuActivity.this.startActivity(intent);
+            }
+        });
+
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, IntroductionActivity.class);
                 MenuActivity.this.startActivity(intent);
             }
         });

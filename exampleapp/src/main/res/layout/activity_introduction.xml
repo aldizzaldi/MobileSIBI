@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:textStyle="bold"
+        android:paddingTop="18dp"
+        android:textColor="@color/black"
+        android:textSize="32dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cara Penggunaan Myo Armband"/>
+
+    <TextView
+        android:textColor="@color/black"
+        android:paddingStart="26dp"
+        android:paddingEnd="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="Aplikasi MobileSIBI ini menggunakan Myo Armband untuk merekam pergerakan tangan."/>
+
+    <TextView
+        android:textColor="@color/black"
+        android:paddingStart="26dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="Pastikan bluetooth pada hanphone menyala, karena Myo Armabnd terkoneksi melalui bluetooh."/>
+
+    <TextView
+        android:textColor="@color/black"
+        android:paddingStart="26dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:text="Pastikan Myo Armband sudah di kalibrasi menggunakan aplikasi Myo Connect pada desktop."/>
+
+<!--    <TextView-->
+<!--        android:textColor="@color/black"-->
+<!--        android:paddingStart="26dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="18dp"-->
+<!--        android:text="Kenakan pada tangan kanan dan pastikan port USB pada Myo Armband menghadap pergelangan tangan anda."/>-->
+
+    <TextView
+        android:gravity=""
+        android:textColor="@color/black"
+        android:paddingStart="26dp"
+        android:paddingEnd="1dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Kenakan pada tangan kanan anda (contoh dapat dilihat pada video pembelajaran) dan pastikan port USB pada Myo Armband menghadap pergelangan tangan anda."/>
+
+    <Button
+        android:id="@+id/btn_mengerti"
+        android:layout_marginTop="40dp"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:text="Koneksikan Myo Armband"
+        android:textColor="@color/white"
+        android:background="@drawable/rounded_button"/>
+
+</LinearLayout>
