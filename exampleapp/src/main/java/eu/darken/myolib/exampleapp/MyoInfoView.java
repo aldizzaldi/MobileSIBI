@@ -787,7 +787,7 @@ public class MyoInfoView extends RelativeLayout implements
 
         dataSensor = String.join(";", str);
 //        dataSensorDF = String.join(";", strDF);
-        dataSensorFloat = String.join(";", strFLOAT);
+        dataSensorFloat = String.join(",", strFLOAT);
 
 //        JSONArray sendData = new JSONArray();
 //        for (int i = 0; i<dataFeature.length; i++){

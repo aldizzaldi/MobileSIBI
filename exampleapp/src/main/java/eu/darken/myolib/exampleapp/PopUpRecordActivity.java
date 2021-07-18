@@ -23,7 +23,6 @@ public class PopUpRecordActivity extends AppCompatActivity {
     TextView tvRecording, tvHasil, tvTimer;
     private final IApiEndPoint apiEndPoint = ApiRetrofit.getInstance().create(IApiEndPoint.class);
     String hasilAPI[];
-    String dataSensorString;
     public int counter;
     String huruf;
     String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjIsImlkX3VzZXIiOjEsInByb2plY3RfbmFtZSI6Im15byJ9.jij3Pb9mQiX1JqmoDAtxgHrNnWJndmOZF5f3PyCsHbc";
@@ -61,6 +60,7 @@ public class PopUpRecordActivity extends AppCompatActivity {
             public void run() {
                 sendAPI();
                 tvTimer.setVisibility(View.GONE);
+                Log.d("dataset", dataSensor);
             }
         }, 3500);
 
