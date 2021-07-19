@@ -17,6 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static eu.darken.myolib.exampleapp.MyoInfoView.dataSensor;
+import static eu.darken.myolib.exampleapp.MyoInfoView.dataSensorFloat;
 import static eu.darken.myolib.exampleapp.MyoInfoView.record;
 
 public class PopUpRecordActivity extends AppCompatActivity {

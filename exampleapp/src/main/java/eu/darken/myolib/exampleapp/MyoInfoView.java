@@ -418,7 +418,7 @@ public class MyoInfoView extends RelativeLayout implements
         Collections.sort(values);
 
         float middle = values.size()/2;
-        if (values.size()%2 == 1) {
+        if (values.size()%2 == 0) {
             middle = (values.get(values.size()/2) + values.get(values.size()/2 - 1))/2;
         } else {
             middle = values.get(values.size() / 2);
@@ -431,7 +431,7 @@ public class MyoInfoView extends RelativeLayout implements
         float mean = CalculateMean(values);
         float variance = (float) 0.0;
         for (i = 0; i < values.size(); i++) {
-            variance +=  Math.pow(values.get(i) - 2, 2);
+            variance +=  Math.pow(values.get(i) - mean, 2);
         }
         variance = variance / (values.size() - 1);
         return variance;
@@ -485,9 +485,26 @@ public class MyoInfoView extends RelativeLayout implements
         return kurtosis;
     }
 
-    public static void record(){
-        record = true;
+    public static void clear(){
         acclXTemp.clear();
+        acclYTemp.clear();
+        acclZTemp.clear();
+        gyroXTemp.clear();
+        gyroYTemp.clear();
+        gyroZTemp.clear();
+        orientWTemp.clear();
+        orientXTemp.clear();
+        orientYTemp.clear();
+        orientZTemp.clear();
+        eulerXTemp.clear();
+        eulerYTemp.clear();
+        eulerZTemp.clear();
+
+    }
+
+    public static void record(){
+        clear();
+        record = true;
 
         new Handler().postDelayed(new Runnable() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -787,7 +804,7 @@ public class MyoInfoView extends RelativeLayout implements
 
         dataSensor = String.join(";", str);
 //        dataSensorDF = String.join(";", strDF);
-        dataSensorFloat = String.join(",", strFLOAT);
+        dataSensorFloat = String.join(";", strFLOAT);
 
 //        JSONArray sendData = new JSONArray();
 //        for (int i = 0; i<dataFeature.length; i++){
