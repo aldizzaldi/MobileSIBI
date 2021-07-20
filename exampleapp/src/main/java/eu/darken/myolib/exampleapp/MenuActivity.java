@@ -1,20 +1,10 @@
 package eu.darken.myolib.exampleapp;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.CompoundButton;
-import android.widget.ToggleButton;
-
-import java.util.Calendar;
-
-//import eu.darken.myolib.exampleapp.alarm.AlarmReceiver;
-import eu.darken.myolib.exampleapp.alarm.NotificationReceiver;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -22,9 +12,7 @@ public class MenuActivity extends AppCompatActivity {
     private Button btnMyo;
     private Button btnAbout;
     static boolean myoConnect = false;
-    private ToggleButton btnNotif;
 
-//    private AlarmReceiver alarmReceiver = new AlarmReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +22,6 @@ public class MenuActivity extends AppCompatActivity {
         btnMenuBelajar = findViewById(R.id.btn_belajar);
         btnMyo = findViewById(R.id.btn_koneksi);
         btnAbout = findViewById(R.id.btn_about);
-//        btnNotif = findViewById(R.id.btn_notif);
-//        btntest = findViewById(R.id.btn_coba);
-
-//        setButton();
 
         if (myoConnect){
             btnMyo.setVisibility(View.GONE);

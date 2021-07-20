@@ -332,6 +332,11 @@ public class MyoInfoView extends RelativeLayout implements
                         orientY = orientF[2];
                         orientZ = orientF[3];
 
+//                        orientX = orientF[0];
+//                        orientY = orientF[1];
+//                        orientZ = orientF[2];
+//                        orientW = orientF[3];
+
                         Log.d("orient nich", "w = " + orientW + ", x = "+ orientX + ", y = " + orientY + ", z = " + orientZ + "");
                         eulerSensor();
 
@@ -398,14 +403,14 @@ public class MyoInfoView extends RelativeLayout implements
         eulerF[0] = eulerX;
         eulerF[1] = eulerY;
         eulerF[2] = eulerZ;
-        euler[0] = eulerX;
-        euler[1] = eulerY;
-        euler[2] = eulerZ;
+//        euler[0] = eulerX;
+//        euler[1] = eulerY;
+//        euler[2] = eulerZ;
     }
 
     public static float CalculateMean(ArrayList<Float> values){
         int i;
-        float mean = (float) 0.0;
+        float mean = 0;
         for (i = 0; i < values.size(); i++) {
             mean += values.get(i);
         }
@@ -429,9 +434,9 @@ public class MyoInfoView extends RelativeLayout implements
     public static float CalculateVariance(ArrayList<Float> values){
         int i;
         float mean = CalculateMean(values);
-        float variance = (float) 0.0;
+        float variance =  0;
         for (i = 0; i < values.size(); i++) {
-            variance +=  Math.pow(values.get(i) - mean, 2);
+            variance +=  (Math.pow((values.get(i) - mean), 2));
         }
         variance = variance / (values.size() - 1);
         return variance;
@@ -444,7 +449,7 @@ public class MyoInfoView extends RelativeLayout implements
     public static float CalculateSkewness(ArrayList<Float> values){
         int i ;
         int size = 0;
-        float skewness = (float) 0.0;
+        float skewness = 0;
         float mean = CalculateMean(values);
         float deviance = CalculateDeviance(values);
 
@@ -466,7 +471,7 @@ public class MyoInfoView extends RelativeLayout implements
     public static float CalculateKurtosis(ArrayList<Float> values){
         int i;
         int size = 0;
-        float kurtosis = (float) 0.0;
+        float kurtosis = 0;
         float mean = CalculateMean(values);
         float deviance = CalculateDeviance(values);
 
@@ -499,7 +504,14 @@ public class MyoInfoView extends RelativeLayout implements
         eulerXTemp.clear();
         eulerYTemp.clear();
         eulerZTemp.clear();
-
+        emgPod1.clear();
+        emgPod2.clear();
+        emgPod3.clear();
+        emgPod4.clear();
+        emgPod5.clear();
+        emgPod6.clear();
+        emgPod7.clear();
+        emgPod8.clear();
     }
 
     public static void record(){
@@ -518,6 +530,9 @@ public class MyoInfoView extends RelativeLayout implements
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public static void calculateData(){
+        Log.d("acclxTemp", acclXTemp + "");
+        Log.d("acclyTemp", acclYTemp + "");
+        Log.d("acclzTemp", acclZTemp + "");
         float meanAcclX = CalculateMean(acclXTemp);
         float meanAcclY = CalculateMean(acclYTemp);
         float meanAcclZ = CalculateMean(acclZTemp);
@@ -774,6 +789,37 @@ public class MyoInfoView extends RelativeLayout implements
         dataFeature[123] = kurtosisEMG6;
         dataFeature[124] = kurtosisEMG7;
         dataFeature[125] = kurtosisEMG8;
+
+        Log.d("meanAccl", dataFeature[0] + ":" + dataFeature[1]+ ":" + dataFeature[2]);
+        Log.d("medianAccl", dataFeature[3] + ":" + dataFeature[4]+ ":" + dataFeature[5]);
+        Log.d("varianceAccl", dataFeature[6] + ":" + dataFeature[7]+ ":" + dataFeature[8]);
+        Log.d("devianceAccl", dataFeature[9] + ":" + dataFeature[10]+ ":" + dataFeature[11]);
+        Log.d("skewnessAccl", dataFeature[12] + ":" + dataFeature[13]+ ":" + dataFeature[14]);
+        Log.d("kurtosisAccl", dataFeature[15] + ":" + dataFeature[16]+ ":" + dataFeature[17]);
+        Log.d("meanGyro", dataFeature[18] + ":" + dataFeature[19]+ ":" + dataFeature[20]);
+        Log.d("medianGyro", dataFeature[21] + ":" + dataFeature[22]+ ":" + dataFeature[23]);
+        Log.d("varianceGyro", dataFeature[24] + ":" + dataFeature[25]+ ":" + dataFeature[26]);
+        Log.d("devianceGyro", dataFeature[27] + ":" + dataFeature[28]+ ":" + dataFeature[29]);
+        Log.d("skewnessGyro", dataFeature[30] + ":" + dataFeature[31]+ ":" + dataFeature[32]);
+        Log.d("kurtosisGyro", dataFeature[33] + ":" + dataFeature[34]+ ":" + dataFeature[35]);
+        Log.d("meanOrient", dataFeature[36] + ":" + dataFeature[37]+ ":" + dataFeature[38]+ ":" + dataFeature[39]);
+        Log.d("medianOrient", dataFeature[40] + ":" + dataFeature[41]+ ":" + dataFeature[42]+ ":" + dataFeature[43]);
+        Log.d("varianceOrient", dataFeature[44] + ":" + dataFeature[45]+ ":" + dataFeature[46]+ ":" + dataFeature[47]);
+        Log.d("devianceOrient", dataFeature[48] + ":" + dataFeature[49]+ ":" + dataFeature[50]+ ":" + dataFeature[51]);
+        Log.d("skewnessOrient", dataFeature[52] + ":" + dataFeature[53]+ ":" + dataFeature[54]+ ":" + dataFeature[55]);
+        Log.d("kurtosisOrient", dataFeature[56] + ":" + dataFeature[57]+ ":" + dataFeature[58]+ ":" + dataFeature[59]);
+        Log.d("meanEuler", dataFeature[60] + ":" + dataFeature[61]+ ":" + dataFeature[62]);
+        Log.d("medianEuler", dataFeature[63] + ":" + dataFeature[64]+ ":" + dataFeature[65]);
+        Log.d("varianceEuler", dataFeature[66] + ":" + dataFeature[67]+ ":" + dataFeature[68]);
+        Log.d("devianceEuler", dataFeature[69] + ":" + dataFeature[70]+ ":" + dataFeature[71]);
+        Log.d("skewnessEuler", dataFeature[72] + ":" + dataFeature[73]+ ":" + dataFeature[74]);
+        Log.d("kurtosisEuler", dataFeature[75] + ":" + dataFeature[76]+ ":" + dataFeature[77]);
+        Log.d("meanEMG", dataFeature[78] + ":" + dataFeature[79]+ ":" + dataFeature[80]+ ":" + dataFeature[81]+ ":" + dataFeature[82]+ ":" + dataFeature[83]+ ":" + dataFeature[84]+ ":" + dataFeature[85]);
+        Log.d("medianEMG", dataFeature[86] + ":" + dataFeature[87]+ ":" + dataFeature[88]+ ":" + dataFeature[89]+ ":" + dataFeature[90]+ ":" + dataFeature[91]+ ":" + dataFeature[92]+ ":" + dataFeature[93]);
+        Log.d("varianceEMG", dataFeature[94] + ":" + dataFeature[95]+ ":" + dataFeature[96]+ ":" + dataFeature[97]+ ":" + dataFeature[98]+ ":" + dataFeature[99]+ ":" + dataFeature[100]+ ":" + dataFeature[101]);
+        Log.d("devianceEMG", dataFeature[101] + ":" + dataFeature[102]+ ":" + dataFeature[103]+ ":" + dataFeature[104]+ ":" + dataFeature[105]+ ":" + dataFeature[106]+ ":" + dataFeature[107]+ ":" + dataFeature[108]);
+        Log.d("skewnessEMG", dataFeature[109] + ":" + dataFeature[110]+ ":" + dataFeature[111]+ ":" + dataFeature[112]+ ":" + dataFeature[113]+ ":" + dataFeature[114]+ ":" + dataFeature[115]+ ":" + dataFeature[116]);
+        Log.d("kurtosisEMG", dataFeature[117] + ":" + dataFeature[118]+ ":" + dataFeature[119]+ ":" + dataFeature[120]+ ":" + dataFeature[121]+ ":" + dataFeature[122]+ ":" + dataFeature[123]+ ":" + dataFeature[124]);
 
         for (int i = 0 ; i < dataFeature.length; i++)
         {
