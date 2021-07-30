@@ -23,7 +23,7 @@ public class MenuActivity extends AppCompatActivity {
         btnMyo = findViewById(R.id.btn_koneksi);
         btnAbout = findViewById(R.id.btn_about);
 
-        if (myoConnect){
+        if (myoConnect) {
             btnMyo.setVisibility(View.GONE);
         }
 
@@ -50,44 +50,5 @@ public class MenuActivity extends AppCompatActivity {
                 MenuActivity.this.startActivity(intent);
             }
         });
-
-//        btntest.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Calendar calendar = Calendar.getInstance();
-//
-//                calendar.set(Calendar.HOUR_OF_DAY,23);
-//                calendar.set(Calendar.MINUTE, 45);
-//                calendar.set(Calendar.SECOND, 1);
-//
-//                Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
-//                PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-//                AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-//                alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
-//            }
-//        });
-
-//        btnNotif.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked){
-//                    btnNotif.setTextOn("Notifikasi Menyala");
-//                    alarmReceiver.setDailyReminder(MenuActivity.this,AlarmReceiver.TYPE_DAILY,"Belajar gerakan SIBI lagi yuk !");
-//                }
-//                else{
-//                    alarmReceiver.cancelAlarm(MenuActivity.this);
-//                    btnNotif.setTextOff("Notifikasi Mati");
-//                }
-//                saveChange(isChecked);
-//            }
-//        });
     }
-
-//    private void setButton(){
-//        btnNotif.setChecked(SharedPrefUtils.getBooleanSharedPref("daily", false));
-//    }
-//
-//    private void saveChange(Boolean value){
-//        SharedPrefUtils.setBooleanSharedPref("daily", value);
-//    }
 }

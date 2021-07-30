@@ -17,7 +17,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static eu.darken.myolib.exampleapp.MyoInfoView.dataSensor;
-import static eu.darken.myolib.exampleapp.MyoInfoView.dataSensorFloat;
 import static eu.darken.myolib.exampleapp.MyoInfoView.record;
 
 public class PopUpRecordActivity extends AppCompatActivity {
@@ -32,15 +31,12 @@ public class PopUpRecordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pop_up_record);
-//        getSupportActionBar().hide();
 
         tvRecording = findViewById(R.id.tv_recording);
         tvHasil = findViewById(R.id.tv_hasil);
         tvTimer = findViewById(R.id.tv_timer);
-//        tvSalahBenar = findViewById(R.id.tv_hasil_benar_salah);
 
         tvHasil.setVisibility(View.GONE);
-//        tvSalahBenar.setVisibility(View.GONE);
 
         huruf = getIntent().getStringExtra("VALUE");
 
@@ -76,17 +72,11 @@ public class PopUpRecordActivity extends AppCompatActivity {
                     Log.d("hasil_api", response.body().getMessage() + "/" + hasilAPI);
                     tvRecording.setVisibility(View.GONE);
                     tvHasil.setVisibility(View.VISIBLE);
-//                    tvSalahBenar.setVisibility(View.VISIBLE);
 
                     if (huruf.equalsIgnoreCase(hasilAPI[0])){
-//                        tvSalahBenar.setText("Jawabanmu BENAR");
-//                        tvSalahBenar.setTextColor(0x06CE27);
-
                         tvHasil.setText("Hasil dari gerakanmu adalah " + hasilAPI[0].toUpperCase() + " gerakanmu sudah tepat");
                     }
                     else {
-//                        tvSalahBenar.setText("Jawabanmu SALAH");
-//                        tvSalahBenar.setTextColor(0xDB0A2D);
                         tvHasil.setText("Hasil dari gerakanmu adalah " + hasilAPI[0].toUpperCase() + " gerakanmu belum tepat");
                     }
                 }

@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -65,37 +64,36 @@ public class MyoInfoView extends RelativeLayout implements
     double gyro[];
     double orient[];
     double euler[];
-    float acceleroF[], acclX, acclY, acclZ;
-    float gyroF[], gyroX, gyroY, gyroZ;
-    float orientF[],  orientW, orientX, orientY, orientZ;
-    float eulerF[], eulerX, eulerY, eulerZ;
+    double acceleroF[], acclX, acclY, acclZ;
+    double gyroF[], gyroX, gyroY, gyroZ;
+    double orientF[],  orientW, orientX, orientY, orientZ;
+    double eulerF[], eulerRoll, eulerPitch, eulerYaw;
 
-    static ArrayList<Float> acclXTemp = new ArrayList<Float>();
-    static ArrayList<Float> acclYTemp = new ArrayList<Float>();
-    static ArrayList<Float> acclZTemp = new ArrayList<Float>();
-    static ArrayList<Float> gyroXTemp = new ArrayList<Float>();
-    static ArrayList<Float> gyroYTemp = new ArrayList<Float>();
-    static ArrayList<Float> gyroZTemp = new ArrayList<Float>();
-    static ArrayList<Float> orientWTemp = new ArrayList<Float>();
-    static ArrayList<Float> orientXTemp = new ArrayList<Float>();
-    static ArrayList<Float> orientYTemp = new ArrayList<Float>();
-    static ArrayList<Float> orientZTemp = new ArrayList<Float>();
-    static  ArrayList<Float> eulerXTemp = new ArrayList<Float>();
-    static  ArrayList<Float> eulerYTemp = new ArrayList<Float>();
-    static  ArrayList<Float> eulerZTemp = new ArrayList<Float>();
-    static  ArrayList<Float> emgPod1 = new ArrayList<Float>();
-    static  ArrayList<Float> emgPod2 = new ArrayList<Float>();
-    static ArrayList<Float> emgPod3 = new ArrayList<Float>();
-    static ArrayList<Float> emgPod4 = new ArrayList<Float>();
-    static ArrayList<Float> emgPod5 = new ArrayList<Float>();
-    static ArrayList<Float> emgPod6 = new ArrayList<Float>();
-    static ArrayList<Float> emgPod7 = new ArrayList<Float>();
-    static ArrayList<Float> emgPod8 = new ArrayList<Float>();
+    static ArrayList<Double> acclXTemp = new ArrayList<Double>();
+    static ArrayList<Double> acclYTemp = new ArrayList<Double>();
+    static ArrayList<Double> acclZTemp = new ArrayList<Double>();
+    static ArrayList<Double> gyroXTemp = new ArrayList<Double>();
+    static ArrayList<Double> gyroYTemp = new ArrayList<Double>();
+    static ArrayList<Double> gyroZTemp = new ArrayList<Double>();
+    static ArrayList<Double> orientWTemp = new ArrayList<Double>();
+    static ArrayList<Double> orientXTemp = new ArrayList<Double>();
+    static ArrayList<Double> orientYTemp = new ArrayList<Double>();
+    static ArrayList<Double> orientZTemp = new ArrayList<Double>();
+    static  ArrayList<Double> eulerXTemp = new ArrayList<Double>();
+    static  ArrayList<Double> eulerYTemp = new ArrayList<Double>();
+    static  ArrayList<Double> eulerZTemp = new ArrayList<Double>();
+    static  ArrayList<Double> emgPod1 = new ArrayList<Double>();
+    static  ArrayList<Double> emgPod2 = new ArrayList<Double>();
+    static ArrayList<Double> emgPod3 = new ArrayList<Double>();
+    static ArrayList<Double> emgPod4 = new ArrayList<Double>();
+    static ArrayList<Double> emgPod5 = new ArrayList<Double>();
+    static ArrayList<Double> emgPod6 = new ArrayList<Double>();
+    static ArrayList<Double> emgPod7 = new ArrayList<Double>();
+    static ArrayList<Double> emgPod8 = new ArrayList<Double>();
 
     public static String dataSensor;
-    public static String dataSensorFloat;
-    public static DecimalFormat df = new DecimalFormat("#.#######");
-//    public static String dataSensor = "-0.301698;0.8918208;0.1591897;-0.2724609;0.9174805;0.1772461;0.008556869;0.04200686;0.02108614;0.09250335;0.2049558;0.1452107;0.09732257;0.1262519;0.1017085;0.1638137;0.2317657;0.1737301;-8.797194;-37.60842;-25.50255;8.625;-19.5625;-9.5;10536.67;2906.203;1566.028;102.6483;53.90921;39.57307;0.04276961;0.03605592;0.08760771;0.05473256;0.04358805;0.142382;0.1062697;0.1044598;-0.9631236;-0.1169571;0.06939697;0.1221924;-0.9765625;-0.02209473;0.01280289;0.005352004;0.0005351041;0.01864873;0.1131499;0.07315739;0.02313232;0.1365604;0.08804137;0.03276688;0.2879466;0.01234491;0.1433225;0.03836885;0.6957949;0.01044037;-0.2339806;0.1949974;2.886639;-0.2091318;0.1248213;3.066977;0.01282092;0.05920041;0.07583552;0.1132295;0.2433113;0.2753825;0.06015843;0.08454358;0.01084394;0.08625693;0.1357812;0.008783103;-0.7755102;-0.5714286;-1.632653;-1.142857;-0.244898;-0.877551;-0.8979592;-0.5918368;-1;1;1;-2;-2;-1;-1;-1;10.34439;141.5;150.9039;143.3333;113.4804;19.27636;45.2602;19.4966;3.216269;11.89538;12.2843;11.97219;10.65272;4.390485;6.727571;4.415495;0.4145376;0.6430464;0.127632;0.4733504;0.2716084;0.3103558;0.4523492;2.069908;1.131055;2.031055;0.2351499;1.349923;0.6436598;0.7689152;1.270663;9.653098";
+    public static String dataSensordouble;
+//    public static DecimalFormat df = new DecimalFormat("#.#######");
 
     static boolean record = false;
 
@@ -128,7 +126,6 @@ public class MyoInfoView extends RelativeLayout implements
         mAcclData = findViewById(R.id.tv_accl);
         mEulerData = findViewById(R.id.tv_euler);
         buttonNext = findViewById(R.id.next);
-//        buttonlast = findViewById(R.id.last);
         mOrientationData = findViewById(R.id.tv_orientation);
 
         super.onFinishInflate();
@@ -207,13 +204,6 @@ public class MyoInfoView extends RelativeLayout implements
 //                record();
             }
         });
-
-//        buttonlast.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                record();
-//            }
-//        });
         super.onAttachedToWindow();
     }
 
@@ -279,14 +269,14 @@ public class MyoInfoView extends RelativeLayout implements
                         Log.d("emg", "Emg:\n" + emgData.toString() + "\n" + (mEmgProcessor.getPacketCounter() * 2) + " EMG/s");
 
                         if (record){
-                            emgPod1.add((float) emgSensor1);
-                            emgPod2.add((float) emgSensor2);
-                            emgPod3.add((float) emgSensor3);
-                            emgPod4.add((float) emgSensor4);
-                            emgPod5.add((float) emgSensor5);
-                            emgPod6.add((float) emgSensor6);
-                            emgPod7.add((float) emgSensor7);
-                            emgPod8.add((float) emgSensor8);
+                            emgPod1.add((double) emgSensor1);
+                            emgPod2.add((double) emgSensor2);
+                            emgPod3.add((double) emgSensor3);
+                            emgPod4.add((double) emgSensor4);
+                            emgPod5.add((double) emgSensor5);
+                            emgPod6.add((double) emgSensor6);
+                            emgPod7.add((double) emgSensor7);
+                            emgPod8.add((double) emgSensor8);
                         }
                     }
                 });
@@ -303,13 +293,13 @@ public class MyoInfoView extends RelativeLayout implements
                 getHandler().post(new Runnable() {
                     @Override
                     public void run() {
-                        acceleroF = new float[3];
-                        gyroF = new float[3];
-                        orientF = new float[4];
+                        acceleroF = new double[3];
+                        gyroF = new double[3];
+                        orientF = new double[4];
 
                         accelero = imuData.getAccelerometerData();
                         for (int i=0; i<imuData.getAccelerometerData().length; i++){
-                            acceleroF[i] = (float) accelero[i];
+                            acceleroF[i] = (double) accelero[i];
                         }
                         acclX = acceleroF[0];
                         acclY = acceleroF[1];
@@ -317,7 +307,7 @@ public class MyoInfoView extends RelativeLayout implements
 
                         gyro =imuData.getGyroData();
                         for (int i=0; i<imuData.getAccelerometerData().length; i++){
-                            gyroF[i] = (float) gyro[i];
+                            gyroF[i] = (double) gyro[i];
                         }
                         gyroX = gyroF[0];
                         gyroY = gyroF[1];
@@ -325,17 +315,12 @@ public class MyoInfoView extends RelativeLayout implements
 
                         orient = imuData.getOrientationData();
                         for (int i=0; i<imuData.getOrientationData().length; i++){
-                            orientF[i] = (float) orient[i];
+                            orientF[i] = (double) orient[i];
                         }
                         orientW = orientF[0];
                         orientX = orientF[1];
                         orientY = orientF[2];
                         orientZ = orientF[3];
-
-//                        orientX = orientF[0];
-//                        orientY = orientF[1];
-//                        orientZ = orientF[2];
-//                        orientW = orientF[3];
 
                         Log.d("orient nich", "w = " + orientW + ", x = "+ orientX + ", y = " + orientY + ", z = " + orientZ + "");
                         eulerSensor();
@@ -362,9 +347,9 @@ public class MyoInfoView extends RelativeLayout implements
                             orientXTemp.add(orientX);
                             orientYTemp.add(orientY);
                             orientZTemp.add(orientZ);
-                            eulerXTemp.add(eulerX);
-                            eulerYTemp.add(eulerY);
-                            eulerZTemp.add(eulerZ);
+                            eulerXTemp.add(eulerRoll);
+                            eulerYTemp.add(eulerPitch);
+                            eulerZTemp.add(eulerYaw);
                         }
                     }
                 });
@@ -394,35 +379,32 @@ public class MyoInfoView extends RelativeLayout implements
     }
 
     public void eulerSensor(){
-        eulerF = new float[3];
+        eulerF = new double[3];
         euler = new double[3];
-        eulerX = (float) Math.atan2(2.0 * (orientW * orientX + orientY * orientZ), 1.0 - 2.0 * (orientX * orientX + orientY * orientY));
-        eulerY = (float) Math.asin(Math.max(-1.0, Math.min(1.0, 2.0 * (orientW * orientY - orientZ * orientX))));
-        eulerZ = (float) Math.atan2(2.0 * (orientW * orientZ + orientX * orientY), 1.0 - 2.0 * (orientY * orientY + orientZ * orientZ));
+        eulerRoll = Math.atan2(2.0 * (orientW * orientX + orientY * orientZ), 1.0 - 2.0 * (orientX * orientX + orientY * orientY));
+        eulerPitch = Math.asin(Math.max(-1.0, Math.min(1.0, 2.0 * (orientW * orientY - orientZ * orientX))));
+        eulerYaw = Math.atan2(2.0 * (orientW * orientZ + orientX * orientY), 1.0 - 2.0 * (orientY * orientY + orientZ * orientZ));
 
-        eulerF[0] = eulerX;
-        eulerF[1] = eulerY;
-        eulerF[2] = eulerZ;
-//        euler[0] = eulerX;
-//        euler[1] = eulerY;
-//        euler[2] = eulerZ;
+        euler[0] = eulerRoll;
+        euler[1] = eulerPitch;
+        euler[2] = eulerYaw;
     }
 
-    public static float CalculateMean(ArrayList<Float> values){
+    public static double CalculateMean(ArrayList<Double> values){
         int i;
-        float mean = 0;
+        double mean = 0;
         for (i = 0; i < values.size(); i++) {
             mean += values.get(i);
         }
         return mean/values.size();
     }
 
-    public static float CalculateMedian(ArrayList<Float> values){
+    public static double CalculateMedian(ArrayList<Double> values){
         if(values.size() == 0) return 0;
 
         Collections.sort(values);
 
-        float middle = values.size()/2;
+        double middle;
         if (values.size()%2 == 0) {
             middle = (values.get(values.size()/2) + values.get(values.size()/2 - 1))/2;
         } else {
@@ -431,36 +413,38 @@ public class MyoInfoView extends RelativeLayout implements
         return middle;
     }
 
-    public static float CalculateVariance(ArrayList<Float> values){
+    public static double CalculateVariance(ArrayList<Double> values){
         int i;
-        float mean = CalculateMean(values);
-        float variance =  0;
+        double mean = CalculateMean(values);
+        double variance =  0;
+
         for (i = 0; i < values.size(); i++) {
             variance +=  (Math.pow((values.get(i) - mean), 2));
         }
         variance = variance / (values.size() - 1);
+
         return variance;
     }
 
-    public static float CalculateDeviance(ArrayList<Float> values){
-        return (float) Math.sqrt(CalculateVariance(values));
+    public static double CalculateDeviance(ArrayList<Double> values){
+        return Math.sqrt(CalculateVariance(values));
     }
 
-    public static float CalculateSkewness(ArrayList<Float> values){
+    public static double CalculateSkewness(ArrayList<Double> values){
         int i ;
         int size = 0;
-        float skewness = 0;
-        float mean = CalculateMean(values);
-        float deviance = CalculateDeviance(values);
+        double skewness = 0;
+        double mean = CalculateMean(values);
+        double deviance = CalculateDeviance(values);
 
         for (i = 0; i < values.size(); i++) {
-            float overDeviance;
+            double overDeviance;
             if(deviance == 0)
                 overDeviance = 0;
             else
                 overDeviance = ((values.get(i) - mean) / deviance);
 
-            skewness = (float) Math.pow(overDeviance,3);
+            skewness = Math.pow(overDeviance,3);
             size++;
         }
         skewness = skewness / size;
@@ -468,21 +452,21 @@ public class MyoInfoView extends RelativeLayout implements
         return skewness;
     }
 
-    public static float CalculateKurtosis(ArrayList<Float> values){
+    public static double CalculateKurtosis(ArrayList<Double> values){
         int i;
         int size = 0;
-        float kurtosis = 0;
-        float mean = CalculateMean(values);
-        float deviance = CalculateDeviance(values);
+        double kurtosis = 0;
+        double mean = CalculateMean(values);
+        double deviance = CalculateDeviance(values);
 
         for (i = 0; i < values.size(); i++) {
-            float overDeviance;
+            double overDeviance;
             if(deviance == 0)
                 overDeviance = 0;
             else
                 overDeviance = ((values.get(i) - mean) / deviance);
 
-            kurtosis = (float) Math.pow(overDeviance,4);
+            kurtosis = Math.pow(overDeviance,4);
             size++;
         }
         kurtosis = kurtosis / size;
@@ -524,6 +508,7 @@ public class MyoInfoView extends RelativeLayout implements
             public void run() {
                 record = false;
                 calculateData();
+                clear();
             }
         },3000);
     }
@@ -533,136 +518,136 @@ public class MyoInfoView extends RelativeLayout implements
         Log.d("acclxTemp", acclXTemp + "");
         Log.d("acclyTemp", acclYTemp + "");
         Log.d("acclzTemp", acclZTemp + "");
-        float meanAcclX = CalculateMean(acclXTemp);
-        float meanAcclY = CalculateMean(acclYTemp);
-        float meanAcclZ = CalculateMean(acclZTemp);
-        float meanGyroX = CalculateMean(gyroXTemp);
-        float meanGyroY = CalculateMean(gyroYTemp);
-        float meanGyroZ = CalculateMean(gyroZTemp);
-        float meanOrientW = CalculateMean(orientWTemp);
-        float meanOrientX = CalculateMean(orientXTemp);
-        float meanOrientY = CalculateMean(orientYTemp);
-        float meanOrientZ = CalculateMean(orientZTemp);
-        float meanEulerX = CalculateMean(eulerXTemp);
-        float meanEulerY = CalculateMean(eulerYTemp);
-        float meanEulerZ = CalculateMean(eulerZTemp);
-        float meanEMG1 = CalculateMean(emgPod1);
-        float meanEMG2 = CalculateMean(emgPod2);
-        float meanEMG3 = CalculateMean(emgPod3);
-        float meanEMG4 = CalculateMean(emgPod4);
-        float meanEMG5 = CalculateMean(emgPod5);
-        float meanEMG6 = CalculateMean(emgPod6);
-        float meanEMG7 = CalculateMean(emgPod7);
-        float meanEMG8 = CalculateMean(emgPod8);
-        float medianAcclX = CalculateMedian(acclXTemp);
-        float medianAcclY = CalculateMedian(acclYTemp);
-        float medianAcclZ = CalculateMedian(acclZTemp);
-        float medianGyroX = CalculateMedian(gyroXTemp);
-        float medianGyroY = CalculateMedian(gyroYTemp);
-        float medianGyroZ = CalculateMedian(gyroZTemp);
-        float medianOrientW = CalculateMedian(orientWTemp);
-        float medianOrientX = CalculateMedian(orientXTemp);
-        float medianOrientY = CalculateMedian(orientYTemp);
-        float medianOrientZ = CalculateMedian(orientZTemp);
-        float medianEulerX = CalculateMedian(eulerXTemp);
-        float medianEulerY = CalculateMedian(eulerYTemp);
-        float medianEulerZ = CalculateMedian(eulerZTemp);
-        float medianEMG1 = CalculateMedian(emgPod1);
-        float medianEMG2 = CalculateMedian(emgPod2);
-        float medianEMG3 = CalculateMedian(emgPod3);
-        float medianEMG4 = CalculateMedian(emgPod4);
-        float medianEMG5 = CalculateMedian(emgPod5);
-        float medianEMG6 = CalculateMedian(emgPod6);
-        float medianEMG7 = CalculateMedian(emgPod7);
-        float medianEMG8 = CalculateMedian(emgPod8);
-        float varianceAcclX = CalculateVariance(acclXTemp);
-        float varianceAcclY = CalculateVariance(acclYTemp);
-        float varianceAcclZ = CalculateVariance(acclZTemp);
-        float varianceGyroX = CalculateVariance(gyroXTemp);
-        float varianceGyroY = CalculateVariance(gyroYTemp);
-        float varianceGyroZ = CalculateVariance(gyroZTemp);
-        float varianceOrientW = CalculateVariance(orientWTemp);
-        float varianceOrientX = CalculateVariance(orientXTemp);
-        float varianceOrientY = CalculateVariance(orientYTemp);
-        float varianceOrientZ = CalculateVariance(orientZTemp);
-        float varianceEulerX = CalculateVariance(eulerXTemp);
-        float varianceEulerY = CalculateVariance(eulerYTemp);
-        float varianceEulerZ = CalculateVariance(eulerZTemp);
-        float varianceEMG1 = CalculateVariance(emgPod1);
-        float varianceEMG2 = CalculateVariance(emgPod2);
-        float varianceEMG3 = CalculateVariance(emgPod3);
-        float varianceEMG4 = CalculateVariance(emgPod4);
-        float varianceEMG5 = CalculateVariance(emgPod5);
-        float varianceEMG6 = CalculateVariance(emgPod6);
-        float varianceEMG7 = CalculateVariance(emgPod7);
-        float varianceEMG8 = CalculateVariance(emgPod8);
-        float devianceAcclX = CalculateDeviance(acclXTemp);
-        float devianceAcclY = CalculateDeviance(acclYTemp);
-        float devianceAcclZ = CalculateDeviance(acclZTemp);
-        float devianceGyroX = CalculateDeviance(gyroXTemp);
-        float devianceGyroY = CalculateDeviance(gyroYTemp);
-        float devianceGyroZ = CalculateDeviance(gyroZTemp);
-        float devianceOrientW = CalculateDeviance(orientWTemp);
-        float devianceOrientX = CalculateDeviance(orientXTemp);
-        float devianceOrientY = CalculateDeviance(orientYTemp);
-        float devianceOrientZ = CalculateDeviance(orientZTemp);
-        float devianceEulerX = CalculateDeviance(eulerXTemp);
-        float devianceEulerY = CalculateDeviance(eulerYTemp);
-        float devianceEulerZ = CalculateDeviance(eulerZTemp);
-        float devianceEMG1 = CalculateDeviance(emgPod1);
-        float devianceEMG2 = CalculateDeviance(emgPod2);
-        float devianceEMG3 = CalculateDeviance(emgPod3);
-        float devianceEMG4 = CalculateDeviance(emgPod4);
-        float devianceEMG5 = CalculateDeviance(emgPod5);
-        float devianceEMG6 = CalculateDeviance(emgPod6);
-        float devianceEMG7 = CalculateDeviance(emgPod7);
-        float devianceEMG8 = CalculateDeviance(emgPod8);
-        float skewnessAcclX = CalculateSkewness(acclXTemp);
-        float skewnessAcclY = CalculateSkewness(acclYTemp);
-        float skewnessAcclZ = CalculateSkewness(acclZTemp);
-        float skewnessGyroX = CalculateSkewness(gyroXTemp);
-        float skewnessGyroY = CalculateSkewness(gyroYTemp);
-        float skewnessGyroZ = CalculateSkewness(gyroZTemp);
-        float skewnessOrientW = CalculateSkewness(orientWTemp);
-        float skewnessOrientX = CalculateSkewness(orientXTemp);
-        float skewnessOrientY = CalculateSkewness(orientYTemp);
-        float skewnessOrientZ = CalculateSkewness(orientZTemp);
-        float skewnessEulerX = CalculateSkewness(eulerXTemp);
-        float skewnessEulerY = CalculateSkewness(eulerYTemp);
-        float skewnessEulerZ = CalculateSkewness(eulerZTemp);
-        float skewnessEMG1 = CalculateSkewness(emgPod1);
-        float skewnessEMG2 = CalculateSkewness(emgPod2);
-        float skewnessEMG3 = CalculateSkewness(emgPod3);
-        float skewnessEMG4 = CalculateSkewness(emgPod4);
-        float skewnessEMG5 = CalculateSkewness(emgPod5);
-        float skewnessEMG6 = CalculateSkewness(emgPod6);
-        float skewnessEMG7 = CalculateSkewness(emgPod7);
-        float skewnessEMG8 = CalculateSkewness(emgPod8);
-        float kurtosisAcclX = CalculateKurtosis(acclXTemp);
-        float kurtosisAcclY = CalculateKurtosis(acclYTemp);
-        float kurtosisAcclZ = CalculateKurtosis(acclZTemp);
-        float kurtosisGyroX = CalculateKurtosis(gyroXTemp);
-        float kurtosisGyroY = CalculateKurtosis(gyroYTemp);
-        float kurtosisGyroZ = CalculateKurtosis(gyroZTemp);
-        float kurtosisOrientW = CalculateKurtosis(orientWTemp);
-        float kurtosisOrientX = CalculateKurtosis(orientXTemp);
-        float kurtosisOrientY = CalculateKurtosis(orientYTemp);
-        float kurtosisOrientZ = CalculateKurtosis(orientZTemp);
-        float kurtosisEulerX = CalculateKurtosis(eulerXTemp);
-        float kurtosisEulerY = CalculateKurtosis(eulerYTemp);
-        float kurtosisEulerZ = CalculateKurtosis(eulerZTemp);
-        float kurtosisEMG1 = CalculateKurtosis(emgPod1);
-        float kurtosisEMG2 = CalculateKurtosis(emgPod2);
-        float kurtosisEMG3 = CalculateKurtosis(emgPod3);
-        float kurtosisEMG4 = CalculateKurtosis(emgPod4);
-        float kurtosisEMG5 = CalculateKurtosis(emgPod5);
-        float kurtosisEMG6 = CalculateKurtosis(emgPod6);
-        float kurtosisEMG7 = CalculateKurtosis(emgPod7);
-        float kurtosisEMG8 = CalculateKurtosis(emgPod8);
+        double meanAcclX = CalculateMean(acclXTemp);
+        double meanAcclY = CalculateMean(acclYTemp);
+        double meanAcclZ = CalculateMean(acclZTemp);
+        double meanGyroX = CalculateMean(gyroXTemp);
+        double meanGyroY = CalculateMean(gyroYTemp);
+        double meanGyroZ = CalculateMean(gyroZTemp);
+        double meanOrientW = CalculateMean(orientWTemp);
+        double meanOrientX = CalculateMean(orientXTemp);
+        double meanOrientY = CalculateMean(orientYTemp);
+        double meanOrientZ = CalculateMean(orientZTemp);
+        double meanEulerX = CalculateMean(eulerXTemp);
+        double meanEulerY = CalculateMean(eulerYTemp);
+        double meanEulerZ = CalculateMean(eulerZTemp);
+        double meanEMG1 = CalculateMean(emgPod1);
+        double meanEMG2 = CalculateMean(emgPod2);
+        double meanEMG3 = CalculateMean(emgPod3);
+        double meanEMG4 = CalculateMean(emgPod4);
+        double meanEMG5 = CalculateMean(emgPod5);
+        double meanEMG6 = CalculateMean(emgPod6);
+        double meanEMG7 = CalculateMean(emgPod7);
+        double meanEMG8 = CalculateMean(emgPod8);
+        double medianAcclX = CalculateMedian(acclXTemp);
+        double medianAcclY = CalculateMedian(acclYTemp);
+        double medianAcclZ = CalculateMedian(acclZTemp);
+        double medianGyroX = CalculateMedian(gyroXTemp);
+        double medianGyroY = CalculateMedian(gyroYTemp);
+        double medianGyroZ = CalculateMedian(gyroZTemp);
+        double medianOrientW = CalculateMedian(orientWTemp);
+        double medianOrientX = CalculateMedian(orientXTemp);
+        double medianOrientY = CalculateMedian(orientYTemp);
+        double medianOrientZ = CalculateMedian(orientZTemp);
+        double medianEulerX = CalculateMedian(eulerXTemp);
+        double medianEulerY = CalculateMedian(eulerYTemp);
+        double medianEulerZ = CalculateMedian(eulerZTemp);
+        double medianEMG1 = CalculateMedian(emgPod1);
+        double medianEMG2 = CalculateMedian(emgPod2);
+        double medianEMG3 = CalculateMedian(emgPod3);
+        double medianEMG4 = CalculateMedian(emgPod4);
+        double medianEMG5 = CalculateMedian(emgPod5);
+        double medianEMG6 = CalculateMedian(emgPod6);
+        double medianEMG7 = CalculateMedian(emgPod7);
+        double medianEMG8 = CalculateMedian(emgPod8);
+        double varianceAcclX = CalculateVariance(acclXTemp);
+        double varianceAcclY = CalculateVariance(acclYTemp);
+        double varianceAcclZ = CalculateVariance(acclZTemp);
+        double varianceGyroX = CalculateVariance(gyroXTemp);
+        double varianceGyroY = CalculateVariance(gyroYTemp);
+        double varianceGyroZ = CalculateVariance(gyroZTemp);
+        double varianceOrientW = CalculateVariance(orientWTemp);
+        double varianceOrientX = CalculateVariance(orientXTemp);
+        double varianceOrientY = CalculateVariance(orientYTemp);
+        double varianceOrientZ = CalculateVariance(orientZTemp);
+        double varianceEulerX = CalculateVariance(eulerXTemp);
+        double varianceEulerY = CalculateVariance(eulerYTemp);
+        double varianceEulerZ = CalculateVariance(eulerZTemp);
+        double varianceEMG1 = CalculateVariance(emgPod1);
+        double varianceEMG2 = CalculateVariance(emgPod2);
+        double varianceEMG3 = CalculateVariance(emgPod3);
+        double varianceEMG4 = CalculateVariance(emgPod4);
+        double varianceEMG5 = CalculateVariance(emgPod5);
+        double varianceEMG6 = CalculateVariance(emgPod6);
+        double varianceEMG7 = CalculateVariance(emgPod7);
+        double varianceEMG8 = CalculateVariance(emgPod8);
+        double devianceAcclX = CalculateDeviance(acclXTemp);
+        double devianceAcclY = CalculateDeviance(acclYTemp);
+        double devianceAcclZ = CalculateDeviance(acclZTemp);
+        double devianceGyroX = CalculateDeviance(gyroXTemp);
+        double devianceGyroY = CalculateDeviance(gyroYTemp);
+        double devianceGyroZ = CalculateDeviance(gyroZTemp);
+        double devianceOrientW = CalculateDeviance(orientWTemp);
+        double devianceOrientX = CalculateDeviance(orientXTemp);
+        double devianceOrientY = CalculateDeviance(orientYTemp);
+        double devianceOrientZ = CalculateDeviance(orientZTemp);
+        double devianceEulerX = CalculateDeviance(eulerXTemp);
+        double devianceEulerY = CalculateDeviance(eulerYTemp);
+        double devianceEulerZ = CalculateDeviance(eulerZTemp);
+        double devianceEMG1 = CalculateDeviance(emgPod1);
+        double devianceEMG2 = CalculateDeviance(emgPod2);
+        double devianceEMG3 = CalculateDeviance(emgPod3);
+        double devianceEMG4 = CalculateDeviance(emgPod4);
+        double devianceEMG5 = CalculateDeviance(emgPod5);
+        double devianceEMG6 = CalculateDeviance(emgPod6);
+        double devianceEMG7 = CalculateDeviance(emgPod7);
+        double devianceEMG8 = CalculateDeviance(emgPod8);
+        double skewnessAcclX = CalculateSkewness(acclXTemp);
+        double skewnessAcclY = CalculateSkewness(acclYTemp);
+        double skewnessAcclZ = CalculateSkewness(acclZTemp);
+        double skewnessGyroX = CalculateSkewness(gyroXTemp);
+        double skewnessGyroY = CalculateSkewness(gyroYTemp);
+        double skewnessGyroZ = CalculateSkewness(gyroZTemp);
+        double skewnessOrientW = CalculateSkewness(orientWTemp);
+        double skewnessOrientX = CalculateSkewness(orientXTemp);
+        double skewnessOrientY = CalculateSkewness(orientYTemp);
+        double skewnessOrientZ = CalculateSkewness(orientZTemp);
+        double skewnessEulerX = CalculateSkewness(eulerXTemp);
+        double skewnessEulerY = CalculateSkewness(eulerYTemp);
+        double skewnessEulerZ = CalculateSkewness(eulerZTemp);
+        double skewnessEMG1 = CalculateSkewness(emgPod1);
+        double skewnessEMG2 = CalculateSkewness(emgPod2);
+        double skewnessEMG3 = CalculateSkewness(emgPod3);
+        double skewnessEMG4 = CalculateSkewness(emgPod4);
+        double skewnessEMG5 = CalculateSkewness(emgPod5);
+        double skewnessEMG6 = CalculateSkewness(emgPod6);
+        double skewnessEMG7 = CalculateSkewness(emgPod7);
+        double skewnessEMG8 = CalculateSkewness(emgPod8);
+        double kurtosisAcclX = CalculateKurtosis(acclXTemp);
+        double kurtosisAcclY = CalculateKurtosis(acclYTemp);
+        double kurtosisAcclZ = CalculateKurtosis(acclZTemp);
+        double kurtosisGyroX = CalculateKurtosis(gyroXTemp);
+        double kurtosisGyroY = CalculateKurtosis(gyroYTemp);
+        double kurtosisGyroZ = CalculateKurtosis(gyroZTemp);
+        double kurtosisOrientW = CalculateKurtosis(orientWTemp);
+        double kurtosisOrientX = CalculateKurtosis(orientXTemp);
+        double kurtosisOrientY = CalculateKurtosis(orientYTemp);
+        double kurtosisOrientZ = CalculateKurtosis(orientZTemp);
+        double kurtosisEulerX = CalculateKurtosis(eulerXTemp);
+        double kurtosisEulerY = CalculateKurtosis(eulerYTemp);
+        double kurtosisEulerZ = CalculateKurtosis(eulerZTemp);
+        double kurtosisEMG1 = CalculateKurtosis(emgPod1);
+        double kurtosisEMG2 = CalculateKurtosis(emgPod2);
+        double kurtosisEMG3 = CalculateKurtosis(emgPod3);
+        double kurtosisEMG4 = CalculateKurtosis(emgPod4);
+        double kurtosisEMG5 = CalculateKurtosis(emgPod5);
+        double kurtosisEMG6 = CalculateKurtosis(emgPod6);
+        double kurtosisEMG7 = CalculateKurtosis(emgPod7);
+        double kurtosisEMG8 = CalculateKurtosis(emgPod8);
 
-        float[] dataFeature = new float[126];
-//        float[] dataFeatureDF = new float[126];
-        float[] dataFeautreFloat = new float[126];
+        double[] dataFeature = new double[126];
+//        double[] dataFeatureDF = new double[126];
+//        double[] dataFeautredouble = new double[126];
         dataFeature[0] = meanAcclX;
         dataFeature[1] = meanAcclY;
         dataFeature[2] = meanAcclZ;
@@ -790,79 +775,65 @@ public class MyoInfoView extends RelativeLayout implements
         dataFeature[124] = kurtosisEMG7;
         dataFeature[125] = kurtosisEMG8;
 
-        Log.d("meanAccl", dataFeature[0] + ":" + dataFeature[1]+ ":" + dataFeature[2]);
-        Log.d("medianAccl", dataFeature[3] + ":" + dataFeature[4]+ ":" + dataFeature[5]);
-        Log.d("varianceAccl", dataFeature[6] + ":" + dataFeature[7]+ ":" + dataFeature[8]);
-        Log.d("devianceAccl", dataFeature[9] + ":" + dataFeature[10]+ ":" + dataFeature[11]);
-        Log.d("skewnessAccl", dataFeature[12] + ":" + dataFeature[13]+ ":" + dataFeature[14]);
-        Log.d("kurtosisAccl", dataFeature[15] + ":" + dataFeature[16]+ ":" + dataFeature[17]);
-        Log.d("meanGyro", dataFeature[18] + ":" + dataFeature[19]+ ":" + dataFeature[20]);
-        Log.d("medianGyro", dataFeature[21] + ":" + dataFeature[22]+ ":" + dataFeature[23]);
-        Log.d("varianceGyro", dataFeature[24] + ":" + dataFeature[25]+ ":" + dataFeature[26]);
-        Log.d("devianceGyro", dataFeature[27] + ":" + dataFeature[28]+ ":" + dataFeature[29]);
-        Log.d("skewnessGyro", dataFeature[30] + ":" + dataFeature[31]+ ":" + dataFeature[32]);
-        Log.d("kurtosisGyro", dataFeature[33] + ":" + dataFeature[34]+ ":" + dataFeature[35]);
-        Log.d("meanOrient", dataFeature[36] + ":" + dataFeature[37]+ ":" + dataFeature[38]+ ":" + dataFeature[39]);
-        Log.d("medianOrient", dataFeature[40] + ":" + dataFeature[41]+ ":" + dataFeature[42]+ ":" + dataFeature[43]);
-        Log.d("varianceOrient", dataFeature[44] + ":" + dataFeature[45]+ ":" + dataFeature[46]+ ":" + dataFeature[47]);
-        Log.d("devianceOrient", dataFeature[48] + ":" + dataFeature[49]+ ":" + dataFeature[50]+ ":" + dataFeature[51]);
-        Log.d("skewnessOrient", dataFeature[52] + ":" + dataFeature[53]+ ":" + dataFeature[54]+ ":" + dataFeature[55]);
-        Log.d("kurtosisOrient", dataFeature[56] + ":" + dataFeature[57]+ ":" + dataFeature[58]+ ":" + dataFeature[59]);
-        Log.d("meanEuler", dataFeature[60] + ":" + dataFeature[61]+ ":" + dataFeature[62]);
-        Log.d("medianEuler", dataFeature[63] + ":" + dataFeature[64]+ ":" + dataFeature[65]);
+//        Log.d("meanAccl", dataFeature[0] + ":" + dataFeature[1]+ ":" + dataFeature[2]);
+//        Log.d("medianAccl", dataFeature[3] + ":" + dataFeature[4]+ ":" + dataFeature[5]);
+//        Log.d("varianceAccl", dataFeature[6] + ":" + dataFeature[7]+ ":" + dataFeature[8]);
+//        Log.d("devianceAccl", dataFeature[9] + ":" + dataFeature[10]+ ":" + dataFeature[11]);
+//        Log.d("skewnessAccl", dataFeature[12] + ":" + dataFeature[13]+ ":" + dataFeature[14]);
+//        Log.d("kurtosisAccl", dataFeature[15] + ":" + dataFeature[16]+ ":" + dataFeature[17]);
+//        Log.d("meanGyro", dataFeature[18] + ":" + dataFeature[19]+ ":" + dataFeature[20]);
+//        Log.d("medianGyro", dataFeature[21] + ":" + dataFeature[22]+ ":" + dataFeature[23]);
+//        Log.d("varianceGyro", dataFeature[24] + ":" + dataFeature[25]+ ":" + dataFeature[26]);
+//        Log.d("devianceGyro", dataFeature[27] + ":" + dataFeature[28]+ ":" + dataFeature[29]);
+//        Log.d("skewnessGyro", dataFeature[30] + ":" + dataFeature[31]+ ":" + dataFeature[32]);
+//        Log.d("kurtosisGyro", dataFeature[33] + ":" + dataFeature[34]+ ":" + dataFeature[35]);
+//        Log.d("meanOrient", dataFeature[36] + ":" + dataFeature[37]+ ":" + dataFeature[38]+ ":" + dataFeature[39]);
+//        Log.d("medianOrient", dataFeature[40] + ":" + dataFeature[41]+ ":" + dataFeature[42]+ ":" + dataFeature[43]);
+//        Log.d("varianceOrient", dataFeature[44] + ":" + dataFeature[45]+ ":" + dataFeature[46]+ ":" + dataFeature[47]);
+//        Log.d("devianceOrient", dataFeature[48] + ":" + dataFeature[49]+ ":" + dataFeature[50]+ ":" + dataFeature[51]);
+//        Log.d("skewnessOrient", dataFeature[52] + ":" + dataFeature[53]+ ":" + dataFeature[54]+ ":" + dataFeature[55]);
+//        Log.d("kurtosisOrient", dataFeature[56] + ":" + dataFeature[57]+ ":" + dataFeature[58]+ ":" + dataFeature[59]);
+//        Log.d("meanEuler", dataFeature[60] + ":" + dataFeature[61]+ ":" + dataFeature[62]);
+//        Log.d("medianEuler", dataFeature[63] + ":" + dataFeature[64]+ ":" + dataFeature[65]);
         Log.d("varianceEuler", dataFeature[66] + ":" + dataFeature[67]+ ":" + dataFeature[68]);
         Log.d("devianceEuler", dataFeature[69] + ":" + dataFeature[70]+ ":" + dataFeature[71]);
-        Log.d("skewnessEuler", dataFeature[72] + ":" + dataFeature[73]+ ":" + dataFeature[74]);
-        Log.d("kurtosisEuler", dataFeature[75] + ":" + dataFeature[76]+ ":" + dataFeature[77]);
-        Log.d("meanEMG", dataFeature[78] + ":" + dataFeature[79]+ ":" + dataFeature[80]+ ":" + dataFeature[81]+ ":" + dataFeature[82]+ ":" + dataFeature[83]+ ":" + dataFeature[84]+ ":" + dataFeature[85]);
-        Log.d("medianEMG", dataFeature[86] + ":" + dataFeature[87]+ ":" + dataFeature[88]+ ":" + dataFeature[89]+ ":" + dataFeature[90]+ ":" + dataFeature[91]+ ":" + dataFeature[92]+ ":" + dataFeature[93]);
+//        Log.d("skewnessEuler", dataFeature[72] + ":" + dataFeature[73]+ ":" + dataFeature[74]);
+//        Log.d("kurtosisEuler", dataFeature[75] + ":" + dataFeature[76]+ ":" + dataFeature[77]);
+//        Log.d("meanEMG", dataFeature[78] + ":" + dataFeature[79]+ ":" + dataFeature[80]+ ":" + dataFeature[81]+ ":" + dataFeature[82]+ ":" + dataFeature[83]+ ":" + dataFeature[84]+ ":" + dataFeature[85]);
+//        Log.d("medianEMG", dataFeature[86] + ":" + dataFeature[87]+ ":" + dataFeature[88]+ ":" + dataFeature[89]+ ":" + dataFeature[90]+ ":" + dataFeature[91]+ ":" + dataFeature[92]+ ":" + dataFeature[93]);
         Log.d("varianceEMG", dataFeature[94] + ":" + dataFeature[95]+ ":" + dataFeature[96]+ ":" + dataFeature[97]+ ":" + dataFeature[98]+ ":" + dataFeature[99]+ ":" + dataFeature[100]+ ":" + dataFeature[101]);
         Log.d("devianceEMG", dataFeature[101] + ":" + dataFeature[102]+ ":" + dataFeature[103]+ ":" + dataFeature[104]+ ":" + dataFeature[105]+ ":" + dataFeature[106]+ ":" + dataFeature[107]+ ":" + dataFeature[108]);
-        Log.d("skewnessEMG", dataFeature[109] + ":" + dataFeature[110]+ ":" + dataFeature[111]+ ":" + dataFeature[112]+ ":" + dataFeature[113]+ ":" + dataFeature[114]+ ":" + dataFeature[115]+ ":" + dataFeature[116]);
-        Log.d("kurtosisEMG", dataFeature[117] + ":" + dataFeature[118]+ ":" + dataFeature[119]+ ":" + dataFeature[120]+ ":" + dataFeature[121]+ ":" + dataFeature[122]+ ":" + dataFeature[123]+ ":" + dataFeature[124]);
+//        Log.d("skewnessEMG", dataFeature[109] + ":" + dataFeature[110]+ ":" + dataFeature[111]+ ":" + dataFeature[112]+ ":" + dataFeature[113]+ ":" + dataFeature[114]+ ":" + dataFeature[115]+ ":" + dataFeature[116]);
+//        Log.d("kurtosisEMG", dataFeature[117] + ":" + dataFeature[118]+ ":" + dataFeature[119]+ ":" + dataFeature[120]+ ":" + dataFeature[121]+ ":" + dataFeature[122]+ ":" + dataFeature[123]+ ":" + dataFeature[124]);
 
-        for (int i = 0 ; i < dataFeature.length; i++)
-        {
-            dataFeautreFloat[i] = dataFeature[i];
-        }
         String[] str = new String[dataFeature.length];
 //        String[] strDF = new String[dataFeatureDF.length];
-        String[] strFLOAT = new String[dataFeautreFloat.length];
+//        String[] strdouble = new String[dataFeature.length];
 
 
-//        String[] str = new String[dataFeautreFloat.length];
+//        String[] str = new String[dataFeautredouble.length];
 //        for(int i=0; i<dataFeature.length; i++) {
-//            dataFeatureDF[i] = do.parsefloat(df.format(dataFeature[i]));
+//            dataFeatureDF[i] = do.parsedouble(df.format(dataFeature[i]));
 //        }
 
         for(int i=0; i<dataFeature.length; i++) {
-            str[i] = df.format(dataFeature[i]);
+            str[i] = String.valueOf(dataFeature[i]);
         }
 
 //        for(int i=0; i<dataFeature.length; i++) {
 //            strDF[i] = String.valueOf(dataFeatureDF[i]);
 //        }
 
-        for(int i=0; i<dataFeautreFloat.length; i++) {
-            strFLOAT[i] = String.valueOf(dataFeautreFloat[i]);
-        }
+//        for(int i=0; i<dataFeautredouble.length; i++) {
+//            strdouble[i] = String.valueOf(dataFeautredouble[i]);
+//        }
 
 
         dataSensor = String.join(";", str);
-//        dataSensorDF = String.join(";", strDF);
-        dataSensorFloat = String.join(";", strFLOAT);
+//        dataSensordouble = String.join(";", strdouble);
 
-//        JSONArray sendData = new JSONArray();
-//        for (int i = 0; i<dataFeature.length; i++){
-//            try {
-//                sendData = sendData.put(dataFeature[i]);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        dataSensor = sendData;
         Log.d("data_sensor1", dataSensor + "");
-        Log.d("data_sensor_df", dataSensorFloat + "");
+//        Log.d("data_sensor_df", dataSensordouble + "");
 
     }
 }

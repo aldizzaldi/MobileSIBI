@@ -16,7 +16,6 @@ public class SplashscreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
         SharedPrefUtils.initSharedPreference("SettingPref", this);
-//        getSupportActionBar().hide();
 
         new Handler().postDelayed(new Runnable() {
             @Override
